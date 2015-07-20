@@ -20,7 +20,23 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="2" />
 	</beans:bean>
+	
+	<beans:bean
+        class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+        <beans:property name="order" value="1" />
+    </beans:bean>
+    
+    <beans:bean 
+    	class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <beans:property name="definitions">
+            <beans:list>
+                <beans:value>/WEB-INF/tiles/tiles-definitions.xml</beans:value>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+    
 
 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
